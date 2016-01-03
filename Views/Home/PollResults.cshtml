@@ -1,0 +1,21 @@
+﻿@model Tally.Models.PollViewModel
+
+@{
+    
+    ViewBag.Title = "Home Page";
+}
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <strong>@Model.Question.QuestionText</strong>
+    </li>
+
+    @foreach (var x in Model.Answers)
+    {
+        <li class="list-group-item">
+            <span class="badge">@x.Count</span>
+            @x.AnswerText
+        </li>
+    }
+
+</ul>

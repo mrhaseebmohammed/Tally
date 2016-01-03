@@ -1,0 +1,93 @@
+﻿@model Tally.Models.CreatePollViewModel
+
+@{
+    
+    ViewBag.Title = "Home Page";
+}
+
+
+    @*<h1>Create a quick poll</h1>*@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <fieldset>
+            <legend>Create a poll</legend>
+            
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" id="answer">
+                @Html.LabelFor(model => model.Answers[0].Value, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(model => model.Answers[0].Value, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.Answers[0].Value, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" id="answer">
+                @Html.LabelFor(model => model.Answers[1].Value, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(model => model.Answers[1].Value, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.Answers[1].Value, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" id="answer">
+                @Html.LabelFor(model => model.Answers[2].Value, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(model => model.Answers[2].Value, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.Answers[2].Value, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" id="answer">
+                @Html.LabelFor(model => model.Answers[3].Value, htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(model => model.Answers[3].Value, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.Answers[3].Value, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            @*@for (int ndx = 2; ndx < 10; ndx++)
+            {
+                <div class="form-group" style="display:none;" id="answer">
+                    @Html.LabelFor(model => model.Answers[ndx].Value, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Answers[ndx].Value, new { htmlAttributes = new { @class = "form-control", @disabled = true} })
+                        @Html.ValidationMessageFor(model => model.Answers[ndx].Value, "", new { @class = "text-danger" })
+                    </div>
+                    <input type="button" value="Remove this answer" onclick="console.log($(this).prev().val())" class="btn btn-default" />
+                </div>
+            }*@
+
+            <div class="form-group">
+                @*<div class="col-md-offset-2 col-md-10">
+                    <input type="button" value="Add an answer" onclick="$('div:hidden').first().show(); $('input:disabled').first().prop('disabled', false);" class="btn btn-default" />
+                </div>*@
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </fieldset>
+
+</div>
+}
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

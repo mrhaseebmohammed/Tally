@@ -1,0 +1,73 @@
+﻿@model Tally.Models.PollViewModel
+
+@{
+    
+    ViewBag.Title = "Home Page";
+}
+
+  
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        <fieldset>
+            <legend class="text-center">@Model.Question.QuestionText</legend>    
+
+           @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @*<div class="form-group">
+            
+            <div class="col-lg-10">
+                <h2 class="text-center">@Model.Question</h2>
+            </div>
+        </div>*@
+
+        @*@for (int ndx = 0; ndx < Model.Answers.Length; ndx++)
+        {
+            <div class="form-group" id="answer">
+                @Html.LabelFor(model => model.Answers[ndx], htmlAttributes: new { @class = "control-label col-lg-2" })
+                <div class="col-lg-10">
+                    @Html.EditorFor(model => model.Answers[ndx], new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.Answers[ndx], "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+
+        }*@
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    <div class="btn-group btn-group-justified"> 
+                        @Html.RadioButton("Answer", @Model.Answers[0].Id, new { @style = "display:none" })
+                        <a href="#" class="btn btn-default" type="radio" value="1" name="Answer" id="Answer" onclick="$(&quot;[type='radio'][value='@Model.Answers[0].Id']&quot;).prop(&quot;checked&quot;, true);$(this).closest('form').submit()">a. @Model.Answers[0].AnswerText</a >
+                        @Html.RadioButton("Answer", @Model.Answers[1].Id, new { @style = "display:none" })
+                        <a href="#" class="btn btn-default" type="radio" value="2" name="Answer" id="Answer" onclick="$(&quot;[type='radio'][value='@Model.Answers[1].Id']&quot;).prop(&quot;checked&quot;, true);$(this).closest('form').submit()">b. @Model.Answers[1].AnswerText</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-12">
+                    <div class="btn-group btn-group-justified">
+                        @Html.RadioButton("Answer", @Model.Answers[2].Id, new { @style = "display:none" })
+                        <a href="#" class="btn btn-default" type="radio" value="3" name="Answer" id="Answer" onclick="$(&quot;[type='radio'][value='@Model.Answers[2].Id']&quot;).prop(&quot;checked&quot;, true);$(this).closest('form').submit()">c. @Model.Answers[2].AnswerText</a>
+                        @Html.RadioButton("Answer", @Model.Answers[3].Id, new { @style = "display:none" })
+                        <a href="#" class="btn btn-default" type="radio" value="4" name="Answer" id="Answer" onclick="$(&quot;[type='radio'][value='@Model.Answers[3].Id']&quot;).prop(&quot;checked&quot;, true);$(this).closest('form').submit()">d. @Model.Answers[3].AnswerText</a>
+                    </div>
+                </div>
+            </div>
+            @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Add an answer" onclick="$('div:hidden').first().show(); $('input:disabled').first().prop('disabled', false);" class="btn btn-default" />
+            </div>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>*@
+        </fieldset>
+
+</div>
+}
+

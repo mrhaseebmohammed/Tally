@@ -1,0 +1,38 @@
+﻿@model Tally.Models.PollViewModel
+
+@{
+
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">X</button>
+    This page is your admin link. Bookmark it to manage your poll. Don't share this. Instead use the buttons below to share your poll.
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <strong>@Model.Question.QuestionText</strong>
+    </li>
+
+    @foreach (var x in Model.Answers)
+    {
+        <li class="list-group-item">
+            <span class="badge">@x.Count</span>
+            @x.AnswerText
+        </li>
+    }
+    <li class="list-group-item">
+        Your Poll link, share this. <input type="text" readonly value="http://tally.redx.rocks/@Model.Question.ShortURL" style="width:100%" />
+    </li>
+    <li class="list-group-item">
+        <span class='st_sharethis_large' st_url="http://tally.redx.rocks/@Model.Question.ShortURL" st_title="Sharing is great!" displayText='ShareThis'></span>
+        <span class='st_facebook_large' st_url="http://tally.redx.rocks/@Model.Question.ShortURL" st_title="Sharing is great!" displayText='Facebook'></span>
+        <span class='st_twitter_large' st_url="http://tally.redx.rocks/@Model.Question.ShortURL" st_title="Sharing is great!" displayText='Tweet'></span>
+        <span class='st_reddit_large' st_url="http://tally.redx.rocks/@Model.Question.ShortURL" st_title="Sharing is great!" displayText='Reddit'></span>
+        <span class='st_whatsapp_large' st_url="http://tally.redx.rocks/@Model.Question.ShortURL" st_title="Sharing is great!" displayText='WhatsApp'></span>
+        <span class='st_email_large' st_url="http://tally.redx.rocks/@Model.Question.ShortURL" st_title="Sharing is great!" displayText='Email'></span>
+    </li>
+
+</ul>
